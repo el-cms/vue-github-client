@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div>
+      <router-link :to="{name: 'Home'}">Home</router-link>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -10,6 +13,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import "./stylesheets/style"
 </style>
