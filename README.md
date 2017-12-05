@@ -1,6 +1,14 @@
-# github
+# VueJs client for GitHub.
 
-> A Vue.js project
+Travail de cours de découverte VueJS.
+
+## Config:
+Une fois les dépendences installées, créez le fichier `src/githubToken.js` avec le contenu suivant:
+
+```js
+const ApiToken = '/* Votre jeton API */'
+export default ApiToken
+```
 
 ## Build Setup
 
