@@ -1,8 +1,5 @@
 <template>
   <div @submit="search">
-    <!-- Error message -->
-    <div class="alert alert-danger" v-if="error">{{error}}</div>
-
     <!-- Search input -->
     <div class="input-group">
       <input type="text"
@@ -13,7 +10,7 @@
              placeholder="Nom d'utilisateur">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" @click="search" :disabled="loading">
-          <i class="glyphicon glyphicon-search"></i>
+          <i class="fa fa-search"></i>
         </button>
       </span>
     </div>
@@ -26,26 +23,31 @@
         <div class="disabled">Total: {{results.total_count}}</div>
 
         <!-- List -->
-        <div v-for="u in results.items">
-          <!-- Main data -->
-          <div class="media user-entry" @click>
+        <div class="list-group clickable">
+          <div class="list-group-item"
+               :class="{shadowed: u.id !== selectedUser && selectedUser}"
+               @click="select(u)"
+               v-for="u in results.items">
+
+            <!-- Arrow -->
+            <div class="pull-right">
+              <i class="fa fa-chevron-right fa-2x"></i>
+            </div>
             <!-- Avatar -->
-            <div class="media-left">
+            <div class="pull-left">
               <img :src="u.avatar_url" alt="" class="media-object avatar avatar-sm">
             </div>
 
             <!-- Name -->
-            <div class="media-body">
-              <h4 class="media-heading">
+            <div>
+              <h4 class="list-group-header">
                 {{u.login}}
-                <small>[<a :href="u.html_url" target="_blank"><i class="glyphicon glyphicon-link"></i> Github</a>]</small>
+                <small>
+                  [<a :href="u.html_url" target="_blank"><i class="glyphicon glyphicon-link"></i> Github</a>]
+                </small>
               </h4>
-              <!--{{u.type}}-->
-            </div>
 
-            <!-- Arrow -->
-            <div class="media-right">
-              <i class="glyphicon glyphicon-chevron-right"></i>
+              <!--{{u.type}}-->
             </div>
 
           </div>
@@ -58,35 +60,36 @@
 
     <div v-if="loading">Chargement...</div>
 
-    <div class="alert alert-info" v-if="firstSearch">
-      Utilisez le formulaire ci-dessus pour rechercher un utilisateur.
+    <!-- First search info -->
+    <div class="text-info" v-if="firstSearch">
+      <i class="fa fa-info-circle"></i> Utilisez le formulaire ci-dessus pour rechercher un utilisateur.
     </div>
+    <!-- Error message -->
+    <div class="text-danger" v-if="error"><i class="fa fa-exclamation-triangle"></i> {{error}}</div>
   </div>
 </template>
 
 <script>
-  // import fake from '../../fakedata'
-
   export default {
 
-    // name: 'element-search-user',
+    name: 'element-search-user',
     data () {
       return {
         name: '',
-        // results: fake,
         results: null,
         loading: false,
-        firstSearch: false,
-        error: ''
+        firstSearch: true,
+        error: '',
+        selectedUser: null
       }
     },
     methods: {
       search () {
         if (!this.loading) {
-          this.firstSearch = false
-          this.loading = true
-
+          this.$emit('resetUI')
           if (this.name !== '' && this.name.length > 3) {
+            this.firstSearch = false
+            this.loading = true
             this.$http.get('https://api.github.com/search/users', {params: {q: this.name}})
               .then(({body}) => {
                 this.results = body
@@ -101,6 +104,10 @@
             this.error = 'Veuillez entrer un nom de plus de 4 caractères'
           }
         }
+      },
+      select (user) {
+        this.selectedUser = user.id
+        this.$emit('selectUser', user)
       }
     }
   }
