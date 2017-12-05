@@ -1,0 +1,8 @@
+.avatar{
+  border-radius: 5px;
+  max-width:128px;
+  &-sm{
+    border-radius: 3px;
+    max-width:32px;
+  }
+}
