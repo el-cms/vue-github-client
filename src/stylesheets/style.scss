@@ -5,13 +5,8 @@ $fa-font-path: "~font-awesome/fonts/";
 // Bootstrap's fonts
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 
-// Theme variables
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
-@import "./variables";
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-// Theme overrides
-@import "./theme";
 
 // Custom styles
 @import "custom";

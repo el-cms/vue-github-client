@@ -25,17 +25,17 @@
         <div class="disabled">Total: {{results.total_count}}</div>
 
         <!-- List -->
-        <div class="clickable">
-          <div class="list-group-item"
-               :class="{shadowed: u.id !== selectedUser && selectedUser}"
+        <div class="list-group"
+             :class="{'selected-col': selectedUser !== null}">
+          <div class="list-group-item clickable"
+               :class="{shadowed: u.id !== selectedUser && selectedUser !== null}"
                @click="select(u)"
                v-for="u in results.items">
 
             <h4 class="list-group-header">
               <img :src="u.avatar_url" alt="" class="avatar avatar-sm">
-              {{u.login}}
-
-              <i class="pull-right fa fa-chevron-right fa-2x"></i>
+              <span>{{u.login}}</span>
+              <i class="fa fa-chevron-right fa-2x"></i>
             </h4>
 
           </div>
@@ -77,6 +77,7 @@
           this.$emit('resetUI')
           if (this.name !== '' && this.name.length > 3) {
             this.firstSearch = false
+            this.selectedUser = null
             this.loading = true
             this.$http.get('https://api.github.com/search/users', {params: {q: this.name}})
               .then(({body}) => {
