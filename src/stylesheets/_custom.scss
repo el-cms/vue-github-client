@@ -1,0 +1,29 @@
+body {
+  margin-top: 50px;
+}
+
+.avatar {
+  border-radius: 5px;
+  max-width: 128px;
+  margin-right: 5px;
+  &-sm {
+    border-radius: 3px;
+    max-width: 32px;
+  }
+}
+
+.shadowed {
+  opacity: .5;
+  background-color: #ccc;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.ui-col {
+  transition: all ease 0.5s;
+}

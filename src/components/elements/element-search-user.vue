@@ -1,5 +1,7 @@
 <template>
-  <div @submit="search">
+  <div>
+    <h2>User</h2>
+
     <!-- Search input -->
     <div class="input-group">
       <input type="text"
@@ -7,7 +9,7 @@
              v-model="name"
              @keypress.enter="search"
              :disabled="loading"
-             placeholder="Nom d'utilisateur">
+             placeholder="Username">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" @click="search" :disabled="loading">
           <i class="fa fa-search"></i>
@@ -23,46 +25,32 @@
         <div class="disabled">Total: {{results.total_count}}</div>
 
         <!-- List -->
-        <div class="list-group clickable">
+        <div class="clickable">
           <div class="list-group-item"
                :class="{shadowed: u.id !== selectedUser && selectedUser}"
                @click="select(u)"
                v-for="u in results.items">
 
-            <!-- Arrow -->
-            <div class="pull-right">
-              <i class="fa fa-chevron-right fa-2x"></i>
-            </div>
-            <!-- Avatar -->
-            <div class="pull-left">
-              <img :src="u.avatar_url" alt="" class="media-object avatar avatar-sm">
-            </div>
+            <h4 class="list-group-header">
+              <img :src="u.avatar_url" alt="" class="avatar avatar-sm">
+              {{u.login}}
 
-            <!-- Name -->
-            <div>
-              <h4 class="list-group-header">
-                {{u.login}}
-                <small>
-                  [<a :href="u.html_url" target="_blank"><i class="glyphicon glyphicon-link"></i> Github</a>]
-                </small>
-              </h4>
-
-              <!--{{u.type}}-->
-            </div>
+              <i class="pull-right fa fa-chevron-right fa-2x"></i>
+            </h4>
 
           </div>
         </div>
         <!-- /List -->
+
       </div>
-      <div v-else>Aucun résultat</div>
-      <!--<pre>{{results}}</pre>-->
+      <div v-else>No results</div>
     </div>
 
-    <div v-if="loading">Chargement...</div>
+    <div v-if="loading">Loading...</div>
 
     <!-- First search info -->
     <div class="text-info" v-if="firstSearch">
-      <i class="fa fa-info-circle"></i> Utilisez le formulaire ci-dessus pour rechercher un utilisateur.
+      <i class="fa fa-info-circle"></i> Use the input above to search for an user/organization.
     </div>
     <!-- Error message -->
     <div class="text-danger" v-if="error"><i class="fa fa-exclamation-triangle"></i> {{error}}</div>
@@ -101,7 +89,7 @@
                 this.loading = false
               })
           } else {
-            this.error = 'Veuillez entrer un nom de plus de 4 caractères'
+            this.error = 'Please, search for an user with more than 3 chars.'
           }
         }
       },

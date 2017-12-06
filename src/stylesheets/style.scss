@@ -14,33 +14,4 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "./theme";
 
 // Custom styles
-@import "styles/avatars";
-@import "styles/items";
-
-.repo-infos {
-  display: flex;
-  flex-wrap: wrap;
-  > div {
-    width: calc(100% / 3 - 15px);
-    margin: 0 15px 15px 0;
-    box-shadow: 0 0 8px -2px rgba(77, 77, 77, .8);
-    padding: 5px;
-    strong {
-      display: block;
-    }
-    &.lg {
-      width: 100%;
-    }
-  }
-}
-
-.shadowed{
-  opacity: .5;
-  &:hover{
-    opacity:1;
-  }
-}
-
-.clickable{
-  cursor: pointer;
-}
+@import "custom";

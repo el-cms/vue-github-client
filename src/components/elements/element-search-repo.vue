@@ -3,21 +3,22 @@
     <div class="alert alert-danger" v-if="error !==null">{{error}}</div>
     <div v-if="user !== null">
       <!--<pre>{{user}}</pre>-->
-
-      <!--<h2>Dépôts de {{user.login}}</h2>-->
+      <h2>
+        <a :href="user.html_url" target="_blank"><i class="fa fa-github"></i> {{user.login}}</a>
+      </h2>
       <ul class="list-group" v-if="repos !== null && !loading">
         <li v-for="r in repos"
             class="list-group-item clickable"
             :class="{shadowed: selectedRepo !== r.id && selectedRepo}"
             @click="select(r)">
-          <div>#{{r.id}} - <strong>{{r.name}}</strong></div>
-          <div>{{r.description}}</div>
-          <!--<pre>{{r}}</pre>-->
+          <i class="pull-right fa fa-chevron-right fa-2x"></i>
+          <div><strong>{{r.name}}</strong></div>
+          <small>{{r.description}}</small>
+          <!-- Arrow -->
         </li>
       </ul>
-      <div v-if="loading">Chargement...</div>
+      <div v-if="loading">Loading...</div>
     </div>
-    <div v-else>Veuillez selectionner un utilisateur</div>
   </div>
 </template>
 
