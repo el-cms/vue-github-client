@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 v-if="repo">{{repo.full_name}}</h2>
-    <div v-if="loading">Chargement...</div>
+    <div v-if="loading">Loading...</div>
     <div class="repo-infos" v-else-if="repoData && repo">
 
       <!--<pre>{{repo}}</pre>-->
@@ -28,22 +28,22 @@
       <blockquote>{{repo.description}}</blockquote>
       <div class="row">
         <div class="col-sm-6">
-          <div v-show="repo.has_project">Projet :<strong> Oui</strong></div>
+          <div v-show="repo.has_project">Project :<strong> Yes</strong></div>
           <div>
             <strong>License</strong>
             <span v-if="!repo.license">Pas de license</span>
             <span v-else><a :href="repo.license.url" target="_blank">{{repo.license.name}}</a></span>
           </div>
-          <div><strong>Date de création :</strong> {{repo.created_at | moment('calendar')}}</div>
-          <div><strong>Date de mise à jour:</strong> {{repo.updated_at | moment('calendar')}}</div>
-          <div><strong>Poussé le :</strong> {{repo.pushed_at | moment('calendar')}}</div>
-          <div><strong>Langage :</strong> {{repo.language}}</div>
+          <div><strong>Created:</strong> {{repo.created_at | moment('calendar')}}</div>
+          <div><strong>Updated:</strong> {{repo.updated_at | moment('calendar')}}</div>
+          <div><strong>Pushed:</strong> {{repo.pushed_at | moment('calendar')}}</div>
+          <div><strong>Language :</strong> {{repo.language}}</div>
         </div>
         <div class="col-sm-6">
-          <div><strong>Git:</strong>{{repo.git_url}}</div>
-          <div><strong>SSH:</strong>{{repo.ssh_url}}</div>
-          <div><strong>Clone:</strong>{{repo.clone_url}}</div>
-          <div><strong>SVN:</strong>{{repo.svn_url}}</div>
+          <div><strong>Git:</strong> {{repo.git_url}}</div>
+          <div><strong>SSH:</strong> {{repo.ssh_url}}</div>
+          <div><strong>Clone:</strong> {{repo.clone_url}}</div>
+          <div><strong>SVN:</strong> {{repo.svn_url}}</div>
         </div>
       </div>
 
@@ -128,7 +128,6 @@
             console.log('plop')
             this.$http.get(`https://api.github.com/repos/${owner}/${name}/contents/README.md`, {type: 'text'})
               .then((md) => {
-                console.log(md)
                 this.readme = md
                 this.loading = false
               })
