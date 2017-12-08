@@ -8,13 +8,12 @@ import ApiToken from './githubToken'
 
 Vue.config.productionTip = false
 
-// Vue-resource pour les requêtes Ajax
 Vue.use(VueResource)
-// Vue-moment pour les dates
 Vue.use(VueMoment)
-// Modification des headers des requêtes
-Vue.http.headers.common.Authorization = `token ${ApiToken}`
-
+// Change headers if token is not empty.
+if (ApiToken.length > 0) {
+  Vue.http.headers.common.Authorization = `token ${ApiToken}`
+}
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

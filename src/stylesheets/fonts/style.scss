@@ -1,0 +1,89 @@
+@import "variables";
+
+@font-face {
+  font-family: 'fontawesome';
+  src:  url('#{$icomoon-font-path}/fontawesome.eot?yypu4h');
+  src:  url('#{$icomoon-font-path}/fontawesome.eot?yypu4h#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/fontawesome.ttf?yypu4h') format('truetype'),
+    url('#{$icomoon-font-path}/fontawesome.woff?yypu4h') format('woff'),
+    url('#{$icomoon-font-path}/fontawesome.svg?yypu4h#fontawesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fa {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'fontawesome' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-info-circle {
+  &:before {
+    content: $fa-info-circle;
+  }
+}
+.fa-bug {
+  &:before {
+    content: $fa-bug;
+  }
+}
+.fa-globe {
+  &:before {
+    content: $fa-globe;
+  }
+}
+.fa-exclamation-triangle {
+  &:before {
+    content: $fa-exclamation-triangle;
+  }
+}
+.fa-warning {
+  &:before {
+    content: $fa-warning;
+  }
+}
+.fa-eye {
+  &:before {
+    content: $fa-eye;
+  }
+}
+.fa-star {
+  &:before {
+    content: $fa-star;
+  }
+}
+.fa-user-secret {
+  &:before {
+    content: $fa-user-secret;
+  }
+}
+.fa-code-fork {
+  &:before {
+    content: $fa-code-fork;
+  }
+}
+.fa-github {
+  &:before {
+    content: $fa-github;
+  }
+}
+.fa-chevron-right {
+  &:before {
+    content: $fa-chevron-right;
+  }
+}
+.fa-search {
+  &:before {
+    content: $fa-search;
+  }
+}
+

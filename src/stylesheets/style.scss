@@ -1,12 +1,12 @@
 // FontAwesome
-$fa-font-path: "~font-awesome/fonts/";
-@import "~font-awesome/scss/font-awesome";
+$icomoon-font-path: "../static/fonts";
+@import "fonts/style";
 
 // Bootstrap's fonts
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// Custom Bootstrap
+@import "bootstrap";
 
 // Custom styles
 @import "custom";

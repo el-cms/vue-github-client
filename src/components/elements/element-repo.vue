@@ -40,10 +40,10 @@
           <div><strong>Langage :</strong> {{repo.language}}</div>
         </div>
         <div class="col-sm-6">
-          <div><strong>git_url:</strong>{{repo.git_url}}</div>
-          <div><strong>ssh_url:</strong>{{repo.ssh_url}}</div>
-          <div><strong>clone_url:</strong>{{repo.clone_url}}</div>
-          <div><strong>svn_url:</strong>{{repo.svn_url}}</div>
+          <div><strong>Git:</strong>{{repo.git_url}}</div>
+          <div><strong>SSH:</strong>{{repo.ssh_url}}</div>
+          <div><strong>Clone:</strong>{{repo.clone_url}}</div>
+          <div><strong>SVN:</strong>{{repo.svn_url}}</div>
         </div>
       </div>
 
